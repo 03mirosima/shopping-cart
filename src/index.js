@@ -1,3 +1,5 @@
+import { render } from "react-dom";
+import App from "./components/App";
 import "./styles/index.scss";
-const a = { a: "name" };
-console.log(a, "bbbb");
+
+render(<App />, document.getElementById("root"));
