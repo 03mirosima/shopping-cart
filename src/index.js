@@ -1,2 +1,2 @@
 const a = { a: "name" };
-console.log(a, "a");
+console.log(a, "bbbb");
