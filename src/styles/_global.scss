@@ -1,8 +1,24 @@
 @use "variables";
 
+@font-face {
+  font-family: "OpenSans";
+  src: url("../fonts/OpenSans-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OpenSansSemiBold";
+  src: url("../fonts/OpenSans-SemiBold.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  margin: 0;
-  background-color: variables.$bg;
-  color: var(--text);
-  background: url("../images//frog_mug.jpg");
+  font-family: variables.$font-primary;
+  margin: 0 auto;
+  background-color: variables.$page-bg;
+}
+
+header {
+  background-color: variables.$base-color;
 }

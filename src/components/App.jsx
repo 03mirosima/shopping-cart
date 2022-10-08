@@ -1,4 +1,6 @@
+import Header from "./Header";
+
 const App = () => {
-  return <h1>fff</h1>;
+  return <Header />;
 };
 export default App;
