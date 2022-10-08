@@ -22,3 +22,10 @@ body {
 header {
   background-color: variables.$base-color;
 }
+main {
+  display: flex;
+  justify-content: space-evenly;
+}
+section {
+  flex: 1;
+}

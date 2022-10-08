@@ -1,0 +1,33 @@
+@use "../variables";
+.item-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  flex: 2;
+  background-color: variables.$primary-color;
+
+  .item-wrapper {
+    height: 225px;
+
+    .item-image {
+      width: 124px;
+      height: 124px;
+      margin: 0 auto;
+      img {
+        width: 92px;
+        height: 92px;
+        border: 1.18px solid #f3f0fe;
+        border-radius: 12px;
+        padding: 10px;
+      }
+    }
+    .item-info {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      width: 124px;
+      padding: 0 14px;
+    }
+  }
+}
