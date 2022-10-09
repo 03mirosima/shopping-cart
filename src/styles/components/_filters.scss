@@ -17,6 +17,54 @@
       background: white;
       padding: 32px;
       width: 100%;
+      label {
+        font-family: variables.$font-secondary;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: variables.$grey-3;
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+        padding-left: 30px;
+        margin: 7px 10px;
+      }
+      [type="radio"] {
+        width: 22px;
+        height: 22px;
+        border: 2px solid variables.$grey-4;
+        background: variables.$white;
+        color: variables.$base-color;
+        vertical-align: middle;
+        -webkit-appearance: none;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      /* Pseudo element for check styling */
+
+      [type="radio"]::before {
+        content: "";
+        color: transparent;
+        display: block;
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+        border: 0;
+        background-color: transparent;
+        background-size: contain;
+      }
+      [type="radio"]:checked {
+        border: 2px solid variables.$base-color;
+        background: variables.$white;
+        color: variables.$base-color;
+      }
+
+      [type="radio"]:checked:before {
+        color: variables.$base-color;
+        text-align: center;
+        content: "\2713";
+      }
     }
   }
 }

@@ -29,41 +29,45 @@ const ItemListing = () => {
   useEffect(() => {
     dispatch(getItems());
   }, [dispatch]);
-  return paginationItems.length > 0 ? (
+  return (
     <section className="middle-section">
       <p className="title">Products</p>
       <ItemTypeFilter />
-      <div className="item-list-wrapper">
-        {paginationItems.map((item, index) => {
-          return (
-            <div key={index} className="item-wrapper">
-              <div className="item-image">
-                <img
-                  src={item.itemPicture === "frogMug" ? frogMug : starWarsShirt}
-                />
-              </div>
-              <div className="item-info">
-                <span className="item-price">
-                  <span className="turkish-lira">₺</span> {item.price}
-                </span>
-                <span className="item-name">{item.name}</span>
-                <button className="add-item-button">Add</button>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+      {paginationItems.length > 0 ? (
+        <>
+          <div className="item-list-wrapper">
+            {paginationItems.map((item, index) => {
+              return (
+                <div key={index} className="item-wrapper">
+                  <div className="item-image">
+                    <img
+                      src={
+                        item.itemPicture === "frogMug" ? frogMug : starWarsShirt
+                      }
+                    />
+                  </div>
+                  <div className="item-info">
+                    <span className="item-price">
+                      <span className="turkish-lira">₺</span> {item.price}
+                    </span>
+                    <span className="item-name">{item.name}</span>
+                    <button className="add-item-button">Add</button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
-      <Pagination
-        itemLenght={
-          filteredItems.length > 0 ? filteredItems.length : allItems.length
-        }
-        itemLimit={itemLimit}
-      />
-    </section>
-  ) : (
-    <section className="middle-section">
-      <h3>Ürün Bulunamadı</h3>
+          <Pagination
+            itemLenght={
+              filteredItems.length > 0 ? filteredItems.length : allItems.length
+            }
+            itemLimit={itemLimit}
+          />
+        </>
+      ) : (
+        <p>Product Not Found</p>
+      )}
     </section>
   );
 };

@@ -3,9 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const API_URL = "http://localhost:3000/";
 
 export const getItems = createAsyncThunk("items/getItems", async () => {
-  const response = await fetch(`${API_URL}items`).catch((e) => {
-    alert(e, "Bir Sorun Oluştu");
-  });
+  const response = await fetch(`${API_URL}items`);
   const data = await response.json();
   return data;
 });
@@ -39,6 +37,29 @@ const dataSlice = createSlice({
       });
       state.filteredItems = filtered;
     },
+    onSorting: (state, { payload }) => {
+      switch (payload) {
+        case "lowest":
+          const lowestItems = state.items.sort((a, b) => a.price - b.price);
+          state.items = lowestItems;
+          return state;
+
+        case "highest":
+          const highestItems = state.items.sort((a, b) => b.price - a.price);
+          state.items = highestItems;
+          return state;
+        case "newest":
+          const newItems = state.items.sort((a, b) => b.added - a.added);
+          state.items = newItems;
+          return state;
+        case "oldest":
+          const oldItems = state.items.sort((a, b) => a.added - b.added);
+          state.items = oldItems;
+          return state;
+        default:
+          return defaultState;
+      }
+    },
   },
   extraReducers: {
     [getItems.fulfilled]: (state, { payload }) => {
@@ -52,7 +73,7 @@ const dataSlice = createSlice({
     },
   },
 });
-export const { onTypeSelect } = dataSlice.actions;
+export const { onTypeSelect, onSorting } = dataSlice.actions;
 export const selectAllItems = (state) => state.data.items;
 export const selectFilteredItems = (state) => state.data.filteredItems;
 export const selectAllCompanies = (state) => state.data.companies;
