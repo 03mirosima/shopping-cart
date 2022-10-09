@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import paginationSlice from "./paginationSlice";
-import shoppingCartSlice from "./shoppingCartSlice";
+import dataSlice from "./dataSlice";
 
 export default configureStore({
-  reducer: { shoppingCart: shoppingCartSlice, pagination: paginationSlice },
+  reducer: { data: dataSlice, pagination: paginationSlice },
 });

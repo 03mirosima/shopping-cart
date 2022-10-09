@@ -1,0 +1,22 @@
+@use "../variables";
+.left-side-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .filter-title {
+    color: variables.$grey;
+    font-size: 13px;
+    line-height: 18px;
+  }
+  .sorting-wrapper {
+    display: flex;
+    flex-direction: column;
+    .radio-button-group {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      padding: 32px;
+      width: 100%;
+    }
+  }
+}

@@ -1,14 +1,20 @@
-import { selectAllItems, getItems } from "../store/shoppingCartSlice";
+import {
+  selectAllItems,
+  getItems,
+  selectFilteredItems,
+} from "../store/dataSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import frogMug from "../images/frog_mug.jpg";
 import starWarsShirt from "../images/starwars-shirt.jpg";
 import Pagination from "./Pagination";
 import { selectCurrentPage, selectItemLimit } from "../store/paginationSlice";
+import ItemTypeFilter from "./ItemTypeFilter";
 
 const ItemListing = () => {
   const dispatch = useDispatch();
   const allItems = useSelector(selectAllItems);
+  const filteredItems = useSelector(selectFilteredItems);
   const currentPage = useSelector(selectCurrentPage);
   const itemLimit = useSelector(selectItemLimit);
 
@@ -16,13 +22,17 @@ const ItemListing = () => {
   const lastRecordIndex = currentPage * itemLimit;
   const firstRecordIndex = lastRecordIndex - itemLimit;
   //We slice items first to last index
-  const paginationItems = allItems.slice(firstRecordIndex, lastRecordIndex);
+  const paginationItems =
+    filteredItems.length > 0
+      ? filteredItems.slice(firstRecordIndex, lastRecordIndex)
+      : allItems.slice(firstRecordIndex, lastRecordIndex);
   useEffect(() => {
     dispatch(getItems());
   }, [dispatch]);
-
-  return (
+  return paginationItems.length > 0 ? (
     <section className="middle-section">
+      <p className="title">Products</p>
+      <ItemTypeFilter />
       <div className="item-list-wrapper">
         {paginationItems.map((item, index) => {
           return (
@@ -44,7 +54,16 @@ const ItemListing = () => {
         })}
       </div>
 
-      <Pagination itemLenght={allItems.length} itemLimit={itemLimit} />
+      <Pagination
+        itemLenght={
+          filteredItems.length > 0 ? filteredItems.length : allItems.length
+        }
+        itemLimit={itemLimit}
+      />
+    </section>
+  ) : (
+    <section className="middle-section">
+      <h3>Ürün Bulunamadı</h3>
     </section>
   );
 };

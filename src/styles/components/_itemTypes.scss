@@ -1,0 +1,23 @@
+@use "../variables";
+.item-types-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 16px 0px;
+  gap: 10px;
+  .item-type {
+    background: variables.$light-grey;
+    color: variables.$base-color;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6px 16px;
+    border-radius: 2px;
+    font-size: 13px;
+    line-height: 18px;
+    cursor: pointer;
+    &.active {
+      background-color: variables.$base-color;
+      color: variables.$white;
+    }
+  }
+}

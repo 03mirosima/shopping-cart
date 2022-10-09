@@ -1,6 +1,13 @@
 @use "../variables";
 .middle-section {
   flex: 2;
+  .title {
+    color: #6f6f6f;
+    font-family: variables.$font-secondary;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 26px;
+  }
   .item-list-wrapper {
     display: flex;
     flex-wrap: wrap;

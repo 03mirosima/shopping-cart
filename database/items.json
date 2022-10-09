@@ -348,8 +348,8 @@
     "slug": "Rustic-Hands-Shirt",
     "added": 1478578035413,
     "manufacturer": "Metz---Kautzer",
-    "itemType": "shirt",
-    "itemPicture": "starWarsShirt"
+    "itemType": "mug",
+    "itemPicture": "frogMug"
   },
   {
     "tags": ["Desk", "Office", "Laptop"],
@@ -359,8 +359,8 @@
     "slug": "Rustic-Office-Shirt-1",
     "added": 1483230128213,
     "manufacturer": "Leannon-Fahey-and-Sawayn",
-    "itemType": "shirt",
-    "itemPicture": "starWarsShirt"
+    "itemType": "mug",
+    "itemPicture": "frogMug"
   },
   {
     "tags": ["Pipe", "Fog"],
@@ -370,7 +370,7 @@
     "slug": "Practical-Fog-Shirt-1",
     "added": 1484682964932,
     "manufacturer": "Konopelski-Group",
-    "itemType": "shirt",
-    "itemPicture": "starWarsShirt"
+    "itemType": "mug",
+    "itemPicture": "frogMug"
   }
 ]

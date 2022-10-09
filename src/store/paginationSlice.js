@@ -4,7 +4,7 @@ const paginationSlice = createSlice({
   name: "pagination",
   initialState: {
     currentPage: 1,
-    itemLimit: 4,
+    itemLimit: 16,
   },
   reducers: {
     onClickNext: (state) => {

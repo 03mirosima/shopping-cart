@@ -8,7 +8,6 @@ const App = () => {
       <Header />
       <main>
         <Filters />
-
         <ItemListing />
 
         <section>ddd</section>

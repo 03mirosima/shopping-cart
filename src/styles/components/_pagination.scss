@@ -5,6 +5,9 @@
   justify-content: space-around;
   align-items: center;
   list-style: none;
+  font-size: 14px;
+  line-height: 16px;
+  cursor: pointer;
   .arrows {
     color: variables.$base-color;
     display: flex;
