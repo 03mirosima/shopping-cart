@@ -12,9 +12,16 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "Helvatica";
+  src: url("../fonts/OpenSans-SemiBold.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
 
 body {
   font-family: variables.$font-primary;
+  font-weight: 600;
   margin: 0 auto;
   background-color: variables.$page-bg;
 }
@@ -28,4 +35,8 @@ main {
 }
 section {
   flex: 1;
+}
+
+.turkish-lira {
+  font-family: sans-serif;
 }

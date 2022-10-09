@@ -1,0 +1,29 @@
+@use "../variables";
+
+.pagination {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  .arrows {
+    color: variables.$base-color;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    fill: variables.$base-color;
+    &.disabled {
+      pointer-events: none;
+      fill: variables.$grey;
+      color: variables.$grey;
+    }
+  }
+  .page-numbers {
+    color: variables.$grey;
+    &.active {
+      background-color: variables.$base-color;
+      color: variables.$white;
+      padding: 10px;
+      border-radius: 2px;
+    }
+  }
+}

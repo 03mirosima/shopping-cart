@@ -1,33 +1,56 @@
 @use "../variables";
-.item-list-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+.middle-section {
   flex: 2;
-  background-color: variables.$primary-color;
+  .item-list-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: variables.$white;
 
-  .item-wrapper {
-    height: 225px;
+    .item-wrapper {
+      height: 225px;
 
-    .item-image {
-      width: 124px;
-      height: 124px;
-      margin: 0 auto;
-      img {
-        width: 92px;
-        height: 92px;
-        border: 1.18px solid #f3f0fe;
-        border-radius: 12px;
-        padding: 10px;
+      .item-image {
+        width: 124px;
+        height: 124px;
+        margin: 0 auto;
+        img {
+          width: 92px;
+          height: 92px;
+          border: 1.18px solid #f3f0fe;
+          border-radius: 12px;
+          padding: 10px;
+        }
       }
-    }
-    .item-info {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      width: 124px;
-      padding: 0 14px;
+      .item-info {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 124px;
+        padding: 0 14px;
+        span {
+          font-size: 14px;
+          line-height: 20px;
+        }
+        .item-price {
+          color: variables.$base-color;
+          font-family: variables.$font-tertiary;
+          font-weight: 400;
+        }
+        .item-name {
+          height: 40px;
+          color: variables.$black;
+        }
+        .add-item-button {
+          background-color: variables.$base-color;
+          color: variables.$white;
+          font-size: 12px;
+          line-height: 20px;
+          border: none;
+          border-radius: 2px;
+        }
+      }
     }
   }
 }

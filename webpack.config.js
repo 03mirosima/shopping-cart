@@ -9,7 +9,12 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.(png|jpe?g|gif|svg)$/i, type: "asset" },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ["@svgr/webpack"],
+      },
+      { test: /\.(png|jpe?g|gif)$/i, type: "asset" },
       {
         test: /\.(s[ac]|c)ss$/i,
         use: [

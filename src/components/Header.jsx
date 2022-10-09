@@ -1,5 +1,5 @@
 import marketLogo from "../images/market-logo.png";
-import bagIcon from "../images/cart-icon.svg";
+import BagIcon from "../images/cart-icon.svg";
 
 const Header = () => {
   return (
@@ -8,9 +8,11 @@ const Header = () => {
         <img src={marketLogo} />
       </div>
       <div className="total-price-wrapper">
-        <img src={bagIcon} />
+        <div>
+          <BagIcon />
+        </div>
         <p className="total-price">
-          <span>₺</span>
+          <span className="turkish-lira">₺</span>
           <span>39,97</span>
         </p>
       </div>

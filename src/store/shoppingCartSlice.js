@@ -7,7 +7,6 @@ export const getItems = createAsyncThunk("items/getItems", async () => {
     alert(e, "Bir Sorun Oluştu");
   });
   const data = await response.json();
-  console.log(data, "data");
   return data;
 });
 export const getCompanies = createAsyncThunk(
