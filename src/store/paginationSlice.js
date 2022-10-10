@@ -14,6 +14,7 @@ const paginationSlice = createSlice({
       state.currentPage -= 1;
     },
     onNumberClick: (state, { payload }) => {
+      console.log(payload, "ll");
       state.currentPage = payload;
     },
   },

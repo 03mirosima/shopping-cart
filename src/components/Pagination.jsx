@@ -13,9 +13,32 @@ const Pagination = ({ itemLenght, itemLimit }) => {
   const currentPageNumber = useSelector(selectCurrentPage);
   //We find the total page number by dividing item lenght to limit
   const pageNumber = Math.ceil(itemLenght / itemLimit);
-  //Then we make an array to that page number
-  const pageNumberArray = [...Array(pageNumber + 1).keys()].slice(1);
+  const Pager = () => {
+    let pagination = [],
+      i = 1;
 
+    while (i <= pageNumber) {
+      if (
+        i <= 4 ||
+        i >= pageNumber - 2 ||
+        (i >= currentPageNumber - 1 && i <= currentPageNumber + 1)
+      ) {
+        pagination.push(
+          <li
+            key={i}
+            className={`page-numbers ${currentPageNumber == i ? "active" : ""}`}
+          >
+            {i}
+          </li>
+        );
+        i++;
+      } else {
+        pagination.push(<div>...</div>);
+        i = i < currentPageNumber ? currentPageNumber - 1 : pageNumber - 2;
+      }
+    }
+    return pagination;
+  };
   return (
     <ul className="pagination">
       <li
@@ -29,7 +52,7 @@ const Pagination = ({ itemLenght, itemLimit }) => {
         <ArrowLeft />
         Prev
       </li>
-      {pageNumberArray.map((number) => {
+      {/*   {pageNumberArray.map((number) => {
         return (
           <li
             key={number}
@@ -43,7 +66,8 @@ const Pagination = ({ itemLenght, itemLimit }) => {
             {number}
           </li>
         );
-      })}
+      })} */}{" "}
+      <Pager />
       <li
         className={`arrows next-button ${
           pageNumber === currentPageNumber ? "disabled" : "active"
