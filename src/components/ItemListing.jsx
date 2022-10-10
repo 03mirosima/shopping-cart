@@ -10,9 +10,18 @@ import starWarsShirt from "../images/starwars-shirt.jpg";
 import Pagination from "./Pagination";
 import { selectCurrentPage, selectItemLimit } from "../store/paginationSlice";
 import ItemTypeFilter from "./ItemTypeFilter";
+import { addCart, sumAmount } from "../store/shoppingCartSlice";
 
 const ItemListing = () => {
   const dispatch = useDispatch();
+
+  const handleAddCart = (itemName, itemPrice, Index) => {
+    dispatch(addCart({ itemName, itemPrice, Index, quantity: 1 }));
+  };
+  useEffect(() => {
+    dispatch(getItems());
+  }, [dispatch]);
+
   const allItems = useSelector(selectAllItems);
   const filteredItems = useSelector(selectFilteredItems);
   const currentPage = useSelector(selectCurrentPage);
@@ -26,9 +35,7 @@ const ItemListing = () => {
     filteredItems.length > 0
       ? filteredItems.slice(firstRecordIndex, lastRecordIndex)
       : allItems.slice(firstRecordIndex, lastRecordIndex);
-  useEffect(() => {
-    dispatch(getItems());
-  }, [dispatch]);
+
   return (
     <section className="middle-section">
       <p className="title">Products</p>
@@ -51,7 +58,14 @@ const ItemListing = () => {
                       <span className="turkish-lira">₺</span> {item.price}
                     </span>
                     <span className="item-name">{item.name}</span>
-                    <button className="add-item-button">Add</button>
+                    <button
+                      className="add-item-button"
+                      onClick={() =>
+                        handleAddCart(item.name, item.price, index)
+                      }
+                    >
+                      Add
+                    </button>
                   </div>
                 </div>
               );

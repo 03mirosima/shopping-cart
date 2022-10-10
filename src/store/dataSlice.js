@@ -41,23 +41,23 @@ const dataSlice = createSlice({
       switch (payload) {
         case "lowest":
           const lowestItems = state.items.sort((a, b) => a.price - b.price);
-          state.items = lowestItems;
+          state.filteredItems = lowestItems;
           return state;
 
         case "highest":
           const highestItems = state.items.sort((a, b) => b.price - a.price);
-          state.items = highestItems;
+          state.filteredItems = highestItems;
           return state;
         case "newest":
           const newItems = state.items.sort((a, b) => b.added - a.added);
-          state.items = newItems;
+          state.filteredItems = newItems;
           return state;
         case "oldest":
           const oldItems = state.items.sort((a, b) => a.added - b.added);
-          state.items = oldItems;
+          state.filteredItems = oldItems;
           return state;
         default:
-          return defaultState;
+          return state.items;
       }
     },
   },

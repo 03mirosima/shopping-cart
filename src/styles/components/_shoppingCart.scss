@@ -1,0 +1,55 @@
+@use "../variables";
+.cart-wrapper {
+  border: 8px solid variables.$base-color;
+  height: 320px;
+  position: relative;
+  .cart-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    .cart-item {
+      display: flex;
+      flex-direction: row;
+      border-bottom: 1px solid variables.$light-grey-4;
+      .cart-info {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        .item-name {
+          color: variables.$black;
+          font-family: variables.$font-secondary;
+          font-weight: 400;
+        }
+        .item-price {
+          color: variables.$base-color;
+          font-family: variables.$font-primary;
+        }
+      }
+      .cart-buttons {
+        flex: 1;
+        span {
+          background-color: variables.$base-color;
+          color: variables.$white;
+          padding: 5px 10px;
+        }
+        button {
+          background: transparent;
+          border: none;
+          color: variables.$base-color;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  .cart-total {
+    padding: 15px;
+    bottom: 40px;
+    position: absolute;
+    right: 50px;
+    border: 2px solid variables.$base-color;
+    color: variables.$base-color;
+  }
+  .no-items {
+    text-align: center;
+  }
+}

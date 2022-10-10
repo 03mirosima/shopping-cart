@@ -2,37 +2,62 @@
 .left-side-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  margin: 10px 30px;
   .filter-title {
     color: variables.$grey;
     font-size: 13px;
     line-height: 18px;
   }
-  .sorting-wrapper {
+  .filtering-wrapper {
     display: flex;
     flex-direction: column;
-    .radio-button-group {
+    width: 296px;
+    height: 274px;
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+      height: 142px;
+    }
+    .input-group {
       display: flex;
       flex-direction: column;
       background: white;
-      padding: 32px;
+      padding: 15px;
       width: 100%;
+      ::-webkit-scrollbar {
+        visibility: hidden;
+      }
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        height: 78px;
+        background-color: variables.$light-grey-3;
+      }
+      .search-box {
+        border-radius: 2px;
+        border: 2px solid variables.$light-grey-3;
+        padding: 20px;
+        font-family: variables.$font-primary;
+      }
       label {
-        font-family: variables.$font-secondary;
+        font-family: "OpenSans";
         font-weight: 400;
         font-size: 14px;
         line-height: 18px;
         color: variables.$grey-3;
-        display: inline-block;
         cursor: pointer;
-        position: relative;
-        padding-left: 30px;
         margin: 7px 10px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
       }
       [type="radio"] {
         width: 22px;
         height: 22px;
-        border: 2px solid variables.$grey-4;
+        border: 2px solid variables.$light-grey-2;
         background: variables.$white;
         color: variables.$base-color;
         vertical-align: middle;
@@ -40,19 +65,9 @@
         border-radius: 50%;
         cursor: pointer;
       }
-
-      /* Pseudo element for check styling */
-
       [type="radio"]::before {
         content: "";
-        color: transparent;
         display: block;
-        width: inherit;
-        height: inherit;
-        border-radius: inherit;
-        border: 0;
-        background-color: transparent;
-        background-size: contain;
       }
       [type="radio"]:checked {
         border: 2px solid variables.$base-color;
@@ -62,6 +77,34 @@
 
       [type="radio"]:checked:before {
         color: variables.$base-color;
+        text-align: center;
+        content: "\2713";
+      }
+      [type="checkbox"] {
+        width: 22px;
+        height: 22px;
+        border: 2px solid variables.$light-grey-2;
+        border-radius: 2px;
+        background: variables.$white;
+        color: variables.$base-color;
+        box-shadow: 0px 1px 7px 0px rgba(93, 56, 192, 0.4);
+        vertical-align: middle;
+        -webkit-appearance: none;
+        cursor: pointer;
+      }
+      [type="checkbox"]::before {
+        content: "";
+        display: block;
+      }
+      [type="checkbox"]:checked {
+        border-radius: 2px;
+        border: 2px solid variables.$base-color;
+        background: variables.$base-color;
+        color: variables.$base-color;
+      }
+
+      [type="checkbox"]:checked:before {
+        color: variables.$white;
         text-align: center;
         content: "\2713";
       }

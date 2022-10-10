@@ -1,49 +1,81 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { onSorting } from "../store/dataSlice";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { onSorting, selectAllItems } from "../store/dataSlice";
 
 const Filters = () => {
   const dispatch = useDispatch();
-  const SortingComponent = () => {
-    const values = [
-      { value: "lowest", name: "Price low to high" },
-      { value: "highest", name: "Price high to low" },
-      { value: "newest", name: "New to old" },
-      { value: "oldest", name: "Old to new" },
-    ];
-    const handleChange = (e) => {
-      dispatch(onSorting(e.target.value));
-    };
-
+  const allItems = useSelector(selectAllItems);
+  //This function is for reduce items to find how many items has the same tag
+  var reduceItems = function (items) {
+    let reducedItems = Object.entries(
+      items.reduce((r, c) => ((r[c] = (r[c] || 0) + 1), r), {})
+    ).map(([k, v]) => {
+      return { name: k, count: v };
+    });
+    return reducedItems;
+  };
+  //First we put all tags in an array
+  let allTag = allItems.flatMap((x) => x.tags);
+  let allBrand = allItems.flatMap((x) => x.tags);
+  const tagResult = reduceItems(allTag);
+  const brandResult = reduceItems(allBrand);
+  const TagFilterComponent = () => {
     return (
-      <div className="sorting-wrapper">
-        <p className="filter-title">Sorting</p>
-        <div className="radio-button-group">
-          {values.map((value, index) => {
-            return (
-              <label key={index}>
-                <input
-                  type="radio"
-                  name="radio-button"
-                  value={value.value}
-                  onChange={(e) => handleChange(e)}
-                />
-                {value.name}
-              </label>
-            );
-          })}
+      <div className="filtering-wrapper">
+        <p className="filter-title"> Tags</p>
+        <div className="input-group">
+          <input className="search-box" type="text" placeholder="Search tag" />
+          <div className="checkbox-group">
+            {tagResult.map((tag, index) => {
+              return (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    name={`checkbox-${index}`}
+                    value={tag.name}
+                  />
+                  {tag.name} ({tag.count})
+                </label>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
   };
-  const FilteringComponent = () => {
-    return <div className="">aa</div>;
+  const BrandFilterComponent = () => {
+    return (
+      <div className="filtering-wrapper">
+        <p className="filter-title"> Brands</p>
+        <div className="input-group">
+          <input
+            className="search-box"
+            type="text"
+            placeholder="Search brand"
+          />
+          <div className="checkbox-group">
+            {brandResult.map((brand, index) => {
+              return (
+                <label key={index}>
+                  <input
+                    type="checkbox"
+                    name={`checkbox-${index}`}
+                    value={brand.name}
+                  />
+                  {brand.name} ({brand.count})
+                </label>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    );
   };
   return (
-    <section className="left-side-wrapper">
-      <SortingComponent />
-      <FilteringComponent />
-    </section>
+    <>
+      <BrandFilterComponent />
+      <TagFilterComponent />
+    </>
   );
 };
 export default Filters;

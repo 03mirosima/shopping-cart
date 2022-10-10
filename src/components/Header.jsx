@@ -3,7 +3,7 @@ import BagIcon from "../images/cart-icon.svg";
 
 const Header = () => {
   return (
-    <header>
+    <header className="header">
       <div className="market-logo-wrapper">
         <img src={marketLogo} />
       </div>

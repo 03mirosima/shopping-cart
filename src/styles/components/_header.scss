@@ -29,4 +29,9 @@ header {
       margin-right: 5px;
     }
   }
+  @media only screen and (max-width: 600px) {
+    .total-price-wrapper {
+      display: none;
+    }
+  }
 }
