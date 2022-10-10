@@ -9,12 +9,13 @@ const App = () => {
   return (
     <main className="wrapper">
       <Header />
-      <section className="middle-section">
-        <ItemListing />
-      </section>
+
       <section className="section left-side-wrapper">
         <SortingComponent />
         <Filters />
+      </section>
+      <section className="middle-section">
+        <ItemListing />
       </section>
       <section className="section right-side-wrapper">
         <ShoppingCart />

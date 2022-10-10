@@ -55,13 +55,27 @@ const dataSlice = createSlice({
           return state.items;
       }
     },
-    onBrandSearch: (state, { payload }) => {
-      if (payload != "") {
-        const filtered = state.brands.filter((item) => {
-          return item.toLowerCase().includes(payload.toLowerCase());
+    onBrandClick: (state, { payload }) => {
+      if (payload != "All") {
+        const filtered = state.items.filter((item) => {
+          return item.manufacturer === payload;
         });
-        state.brands = filtered;
-      } else return state.brands;
+        state.filteredItems = filtered;
+      } else state.filteredItems = state.items;
+    },
+    onTagClick: (state, { payload }) => {
+      if (payload != "All") {
+        const filterArray = [];
+        state.items.map((subItem) => {
+          return subItem.tags.map((item) => {
+            if (item === payload) {
+              filterArray.push(subItem);
+            }
+          });
+        });
+        console.log(filterArray);
+        state.filteredItems = filterArray;
+      } else state.filteredItems = state.items;
     },
   },
 
@@ -77,7 +91,8 @@ const dataSlice = createSlice({
     },
   },
 });
-export const { onTypeSelect, onSorting, onBrandSearch } = dataSlice.actions;
+export const { onTypeSelect, onSorting, onBrandClick, onTagClick } =
+  dataSlice.actions;
 export const selectAllItems = (state) => state.data.items;
 export const selectFilteredItems = (state) => state.data.filteredItems;
 export const selectAllCompanies = (state) => state.data.companies;

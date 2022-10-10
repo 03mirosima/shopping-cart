@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { onBrandClick, onTagClick } from "../store/dataSlice";
 
 const Filters = () => {
+  const dispatch = useDispatch();
   //States for input values
   const [searchedBrand, setBrand] = useState("");
   const [searchedTag, setTag] = useState("");
@@ -22,6 +24,8 @@ const Filters = () => {
   //States for filtered brand and tag values
   const [filteredBrands, setBrands] = useState(brandResult);
   const [filteredTags, setTags] = useState(tagResult);
+  filteredBrands.unshift({ name: "All", count: allBrand.length });
+  filteredTags.unshift({ name: "All", count: allTag.length });
   useEffect(() => {
     setBrands(brandResult);
     setTags(tagResult);
@@ -42,6 +46,12 @@ const Filters = () => {
         })),
         setTag(value),
         setTags(filteredTags));
+  };
+  const handleBrandClick = (brandName) => {
+    dispatch(onBrandClick(brandName));
+  };
+  const handleTagClick = (tagName) => {
+    dispatch(onTagClick(tagName));
   };
   return (
     <>
@@ -64,6 +74,9 @@ const Filters = () => {
                     type="checkbox"
                     name={`checkbox-${index}`}
                     value={brand.name}
+                    onChange={() => {
+                      handleBrandClick(brand.name);
+                    }}
                   />
                   {brand.name} ({brand.count})
                 </label>
@@ -93,6 +106,9 @@ const Filters = () => {
                     type="checkbox"
                     name={`checkbox-${index}`}
                     value={tag.name}
+                    onClick={() => {
+                      handleTagClick(tag.name);
+                    }}
                   />
                   {tag.name} ({tag.count})
                 </label>
