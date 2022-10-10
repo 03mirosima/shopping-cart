@@ -70,7 +70,13 @@ main {
 }
 
 .footer {
-  background: lightgreen;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-family: variables.$font-secondary;
+  font-weight: 400;
+  font-size: 13px;
+  color: variables.$base-color;
 }
 
 @media all and (min-width: 600px) {

@@ -18,16 +18,15 @@ const ShoppingCart = () => {
   };
   const cartItems = useSelector(selectCartContent);
   const totalPrice = useSelector(selectCartTotal);
-  console.log(totalPrice);
 
   return (
     <div className="cart-wrapper">
       <div>
         {cartItems.length > 0 ? (
           <ul className="cart-list">
-            {cartItems.map((item) => {
+            {cartItems.map((item, index) => {
               return (
-                <li className="cart-item">
+                <li key={index} className="cart-item">
                   <div className="cart-info">
                     <span className="item-name">{item.itemName}</span>
                     <span className="item-price">
@@ -62,7 +61,7 @@ const ShoppingCart = () => {
         )}
         <span className="cart-total">
           <span className="turkish-lira">₺</span>
-          {totalPrice}
+          {totalPrice.toFixed(2)}
         </span>
       </div>
     </div>

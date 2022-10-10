@@ -1,7 +1,10 @@
 import marketLogo from "../images/market-logo.png";
 import BagIcon from "../images/cart-icon.svg";
+import { useSelector } from "react-redux";
+import { selectCartTotal } from "../store/shoppingCartSlice";
 
 const Header = () => {
+  const totalPrice = useSelector(selectCartTotal);
   return (
     <header className="header">
       <div className="market-logo-wrapper">
@@ -13,7 +16,7 @@ const Header = () => {
         </div>
         <p className="total-price">
           <span className="turkish-lira">₺</span>
-          <span>39,97</span>
+          <span>{totalPrice.toFixed(2)}</span>
         </p>
       </div>
     </header>

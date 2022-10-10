@@ -3,22 +3,25 @@ import Header from "./Header";
 import ItemListing from "./ItemListing";
 import ShoppingCart from "./ShoppingCart";
 import SortingComponent from "./SortingComponent";
+import Footer from "./Footer";
 
 const App = () => {
   return (
-    <main class="wrapper">
+    <main className="wrapper">
       <Header />
-      <section class="middle-section">
+      <section className="middle-section">
         <ItemListing />
       </section>
-      <secton class="section left-side-wrapper">
+      <section className="section left-side-wrapper">
         <SortingComponent />
         <Filters />
-      </secton>
-      <section class="section right-side-wrapper">
+      </section>
+      <section className="section right-side-wrapper">
         <ShoppingCart />
       </section>
-      <footer class="footer">Footer</footer>
+      <footer className="footer">
+        <Footer />
+      </footer>
     </main>
   );
 };

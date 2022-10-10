@@ -13,33 +13,30 @@ const shoppingCartSlice = createSlice({
       const isFound = state.cart.find((c) => c.Index === payload.Index);
       if (isFound) {
         isFound.Index = payload.Index;
-        let totalQuantity = (isFound.quantity += 1);
-        state.totalPrice = isFound.itemPrice * totalQuantity;
+        isFound.quantity += 1;
+        state.totalPrice += isFound.itemPrice;
       } else {
         state.cart.push(payload);
         state.totalPrice += payload.itemPrice * payload.quantity;
       }
     },
-    sumAmount: (state) => {
-      console.log("kk");
-      state.cart.forEach((c) => {
-        console.log(c.itemPrice);
-        state.totalPrice += c.itemPrice * c.quantity;
-      });
-    },
 
     decreaseQuantity: (state, { payload }) => {
-      const isFound = state.cart.find((c) => c.Index === payload.Index);
-      if (isFound) {
-        isFound.quantity -= 1;
-        state.totalPrice -= isFound.itemPrice;
+      const item = state.cart.find((c) => c.Index === payload.Index);
+      if (item) {
+        item.quantity -= 1;
+        state.totalPrice -= item.itemPrice;
+      }
+      //If item quantity is 0 remove from cart
+      if (item.quantity === 0) {
+        state.cart = state.cart.filter((c) => c.Index !== payload.Index);
       }
     },
     increaseQuantity: (state, { payload }) => {
-      const isFound = state.cart.find((c) => c.Index === payload.Index);
-      if (isFound) {
-        isFound.quantity += 1;
-        isFound.totalPrice += isFound.itemPrice;
+      const item = state.cart.find((c) => c.Index === payload.Index);
+      if (item) {
+        item.quantity += 1;
+        state.totalPrice += item.itemPrice;
       }
     },
     deleteCart: (state, action) => {
@@ -68,7 +65,6 @@ export const {
   increaseQuantity,
   decreaseQuantity,
   sendSelectedItems,
-  sumAmount,
   deletedSumAmount,
 } = shoppingCartSlice.actions;
 
