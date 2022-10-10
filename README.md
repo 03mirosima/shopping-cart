@@ -2,6 +2,8 @@
 
 ### About This Project
 
+This project is deployed by Netlify
+
 #### You can see a live version of this repo <a href="https://dulcet-biscuit-8b55b7.netlify.app/" target="_blank">here</a>
 
 ## Installation and Start
