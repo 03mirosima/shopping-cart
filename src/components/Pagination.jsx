@@ -25,7 +25,6 @@ const Pagination = ({ itemLenght, itemLimit }) => {
       ) {
         pagination.push(
           <li
-            key={i}
             className={`page-numbers ${currentPageNumber == i ? "active" : ""}`}
           >
             {i}
@@ -52,21 +51,6 @@ const Pagination = ({ itemLenght, itemLimit }) => {
         <ArrowLeft />
         Prev
       </li>
-      {/*   {pageNumberArray.map((number) => {
-        return (
-          <li
-            key={number}
-            onClick={() => {
-              dispatch(onNumberClick(number));
-            }}
-            className={`page-numbers ${
-              currentPageNumber == number ? "active" : ""
-            }`}
-          >
-            {number}
-          </li>
-        );
-      })} */}{" "}
       <Pager />
       <li
         className={`arrows next-button ${

@@ -15,13 +15,6 @@ export const getCompanies = createAsyncThunk(
     return data;
   }
 );
-export const getItemTypes = createAsyncThunk("types/getTypes", async () => {
-  const response = await fetch(`${API_URL}items`).catch((e) => {
-    alert(e, "Bir Sorun Oluştu");
-  });
-  const data = await response.json();
-  return [...new Set(data.map((item) => item.itemType))];
-});
 const dataSlice = createSlice({
   name: "data",
   initialState: {
@@ -29,6 +22,8 @@ const dataSlice = createSlice({
     filteredItems: [],
     companies: [],
     itemTypes: [],
+    brands: [],
+    tags: [],
   },
   reducers: {
     onTypeSelect: (state, { payload }) => {
@@ -60,20 +55,29 @@ const dataSlice = createSlice({
           return state.items;
       }
     },
+    onBrandSearch: (state, { payload }) => {
+      if (payload != "") {
+        const filtered = state.brands.filter((item) => {
+          return item.toLowerCase().includes(payload.toLowerCase());
+        });
+        state.brands = filtered;
+      } else return state.brands;
+    },
   },
+
   extraReducers: {
     [getItems.fulfilled]: (state, { payload }) => {
       state.items = payload;
+      state.itemTypes = [...new Set(payload.map((item) => item.itemType))];
+      state.brands = state.items.flatMap((x) => x.manufacturer);
+      state.tags = state.items.flatMap((x) => x.tags);
     },
     [getCompanies.fulfilled]: (state, { payload }) => {
       state.companies = payload;
     },
-    [getItemTypes.fulfilled]: (state, { payload }) => {
-      state.itemTypes = payload;
-    },
   },
 });
-export const { onTypeSelect, onSorting } = dataSlice.actions;
+export const { onTypeSelect, onSorting, onBrandSearch } = dataSlice.actions;
 export const selectAllItems = (state) => state.data.items;
 export const selectFilteredItems = (state) => state.data.filteredItems;
 export const selectAllCompanies = (state) => state.data.companies;

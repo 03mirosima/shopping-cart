@@ -1,18 +1,11 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  onTypeSelect,
-  selectAllItemTypes,
-  getItemTypes,
-} from "../store/dataSlice";
+import { onTypeSelect, selectAllItemTypes } from "../store/dataSlice";
 
 const ItemTypeFilter = () => {
   const dispatch = useDispatch();
   const [active, setActive] = useState("");
   const itemTypes = useSelector(selectAllItemTypes);
-  useEffect(() => {
-    dispatch(getItemTypes());
-  }, [dispatch]);
 
   const handleTypeClick = (itemType) => {
     dispatch(onTypeSelect(itemType));

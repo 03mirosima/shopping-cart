@@ -35,7 +35,6 @@ const ItemListing = () => {
     filteredItems.length > 0
       ? filteredItems.slice(firstRecordIndex, lastRecordIndex)
       : allItems.slice(firstRecordIndex, lastRecordIndex);
-  console.log(lastRecordIndex, firstRecordIndex);
   return (
     <section className="middle-section">
       <p className="title">Products</p>
