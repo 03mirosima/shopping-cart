@@ -79,13 +79,13 @@ main {
   color: variables.$base-color;
 }
 
-@media all and (min-width: 600px) {
+@media only screen and (min-width: 600px) {
   .section {
     flex: 1 0 0;
   }
 }
 
-@media all and (min-width: 800px) {
+@media only screen and (min-width: 800px) {
   .middle-section {
     flex: 3 0px;
   }

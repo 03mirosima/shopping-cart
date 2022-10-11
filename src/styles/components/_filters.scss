@@ -1,5 +1,6 @@
 @use "../variables";
-.left-side-wrapper {
+.left-side-wrapper,
+.left-side-wrapper-mobile {
   display: flex;
   flex-direction: column;
   margin: 10px 30px;
@@ -109,5 +110,10 @@
         content: "\2713";
       }
     }
+  }
+}
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  .left-side-wrapper {
+    display: none;
   }
 }
