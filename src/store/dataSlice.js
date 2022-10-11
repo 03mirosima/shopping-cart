@@ -2,9 +2,17 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const API_URL = "http://localhost:3000/";
 
-export const getItems = createAsyncThunk("items/getItems", async () => {
+/* json-server doesn't work on Netlify so I come up with this solution till I solve the problem 
+Below code is my json-server data fetching code
+*/
+
+/* export const getItems = createAsyncThunk("items/getItems", async () => {
   const response = await fetch(`${API_URL}items`);
   const data = await response.json();
+  return data;
+}); */
+export const getItems = createAsyncThunk("items/getItems", async () => {
+  const data = await jsonData;
   return data;
 });
 export const getCompanies = createAsyncThunk(
