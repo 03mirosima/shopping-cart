@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import jsonData from "./items.json";
 
 const API_URL = "http://localhost:3000/";
 
